@@ -1,0 +1,91 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const last_posts = posts.slice(0, 3);
+---
+
+<BaseLayout title="Chih-Yu Chen's Homepage" sideBarActiveItemID="home">
+  <div class="pb-12 mt-5">
+    <div class="text-5xl font-bold">Chih-Yu Chen</div>
+    <div class="text-3xl py-3 font-bold">Research and Development Engineer</div>
+    <div class="py-2">
+      <text class="text-lg">
+        I am currently working as a research associate and pursuing my PhD at the Chair of Carbon Composites at the Technical University of Munich (TUM), 
+        specializing in developing the manufacturing process of continuous fiber non-planar 3D printing 
+        using KUKA robots. I'm also the founder of DASH, a student initiative at TUM dedicated to developing lower-limb 
+        exoskeletons for paraplegic patients. My skills encompass machine design, additive manufacturing, and finite element modelling, 
+        allowing me to turn ideas into practical solutions.
+      </text>
+    </div>
+    <div class="mt-8">
+      <a href="https://www.linkedin.com/in/chih-yu-chen/" target="_blank" class="btn btn-outline"> Let's connect! </a>
+      <a href="https://orcid.org/0000-0002-6670-5682" target="_blank" class="btn btn-outline ml-5"> MY ORCID </a>
+    </div>
+  </div>
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-2">My Projects</div>
+  </div>
+
+  <HorizontalCard
+    title="DASH"
+    img="/full_rendered1.png"
+    desc="Student team at the Technical University of Munich developing and building lower-limb exoskeletons for paraplegic patients."
+    url="/project_dash"
+  />
+  <div class="divider my-0"></div>
+  
+  <HorizontalCard
+    title="Continuous fiber robotic 3D printing"
+    img="/CF3DP2.PNG"
+    desc="Continuous fiber printhead intergrated on a robotic arm for printing small and complex carbon fiber reinforced structures."
+    url="/project_cf3dp"
+  />
+  <div class="divider my-0"></div>
+  
+  <HorizontalCard
+    title="Slicer for non-planar 3D printing"
+    img="/torquelink.PNG"
+    desc="A computational framework that allows for the deposition of material on non-planar surfaces along the direction of the largest principal stress obtained from a finite element analysis following topology optimization."
+    url="/project_slicer"
+  />
+  <div class="divider my-0"></div>
+  
+  <HorizontalCard
+    title="Transparency control of 1-DoF exoskeleton knee joint"
+    img="/Capture.PNG"
+    desc="A novel approach to transparency control based on a human-in-the-loop velocity optimization framework."
+    url="project_transparency"
+  />
+  <div class="divider my-0"></div>
+  
+  <!--
+  <HorizontalCard
+    title="Multibody simulation of lower-limb exoskeleton"
+    img="/multibody.PNG"
+    desc="An approach to design patient-specific lower-limb exoskeleton frame strcutures."
+    url="project_multibody"
+  />
+  <div class="divider my-0"></div>
+  -->
+  
+  <HorizontalCard
+    title="Finite element modelling of extreme shape transformation"
+    img="/versatile1.PNG"
+    desc="Reversible shape transformation between 2D PDMS precursor design to 3D structure by buckling mechanism."
+    url="project_extremeshape"
+  />  
+  <div class="divider my-0"></div>
+  
+  <HorizontalCard
+    title="VEX robotics competition"
+    img="/vexclose.PNG"
+    desc="A remote controllable robot for collecting and dropping off bean-bag sacks into certain areas of the field to score points."
+    url="project_VEX"
+  />  
+
+</BaseLayout>
